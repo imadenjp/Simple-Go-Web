@@ -1,10 +1,10 @@
-# Simple Go Web Server using Gin Framework
+# 🌐 Simple Go Web Server using Gin Framework
 
-## Description
+## 📝 Description
 
 This is a simple golang web using Gin for the Framework. This web return a JSON data format. You can look at the main.go file for the code.
 
-## How To Run
+## 🚀 How To Run
 
 1. Clone this repository.
 ```bash
