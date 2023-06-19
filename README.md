@@ -16,7 +16,13 @@ $ git clone https://github.com/imadenjp/Simple-Go-Web.git
 $ cd Simple-Go-Web
 ```
 
-3. Run the code using this command. The server will run on default port(8080) or you can change on the code.
+3. Run the code using this command. The server will run on default port(8000) or you can change on the code.
 ```bash
 $ go run main.go
+```
+
+4. Or you can build the app first.
+```bash
+$ go build -o main
+$ ./main
 ```
