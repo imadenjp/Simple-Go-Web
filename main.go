@@ -1,32 +1,27 @@
 package main
 
 import (
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
 
-type Person struct {
-	id int `uri:"id" binding:"required"`
-	name string `uri:"name" binding:"required,id"`
-	msg string `uri:"msg" binding:"required"`
+func helloWorld(ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, gin.H{
+		"message": "Hello World",
+	})
+}
+
+func pingPong(ctx *gin.Context) {
+	ctx.JSON(http.StatusOK, gin.H{
+		"message": "pong",
+	})
 }
 
 func main() {
-	Gin := gin.Default()
+	router := gin.Default()
+	router.GET("/", helloWorld)
+	router.GET("/ping", pingPong)
 
-	Gin.GET("/:id/:name", func(ctx *gin.Context){
-		var person Person
-		person.id = 100
-		person.name = "moonliez"
-		person.msg = "Hello World!"
-
-		if err := ctx.ShouldBindUri(&person); err != nil {
-			ctx.JSON(400, gin.H{"msg": err})
-		}
-		ctx.JSON(200, gin.H{
-			"id": person.id,
-			"name": person.name,
-			"msg": person.msg,
-		})
-	})
-	Gin.Run(":8000")
+	router.Run("0.0.0.0:8000")
 }
